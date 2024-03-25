@@ -1,0 +1,38 @@
+[
+    {
+        "id" : 1,
+        "profilePicture" : "",
+        "author": "Indah Pra Karya",
+        "alias": "@indahprakarya",
+        "timePost": "4h",
+        "section": "Kalian pernah ga sih bet on saving? Jadi by calculation sebenernya kita ga survive sampe tanggal tertentu. Tapi entah gimana bisa aja gitu. Ada aja jalannya augmented reality real time puppet I made. You can try it now went below in the thread.",
+        "image": ""
+    },
+    {
+        "id" : 2,
+        "profilePicture" : "",
+        "author": "Sujiwo",
+        "alias": "@Tedjo",
+        "timePost": "8h",
+        "section": "Sugih tanpo bondho digdoyo tanpo adji, gemah mawi pasrah, sepi pamrih tebih ajrih.",
+        "image": ""
+    },
+    {
+        "id" : 3,
+        "profilePicture" : "",
+        "author": "Susilo Bambang",
+        "alias": "@susilobambang",
+        "timePost": "12h",
+        "section": "Key of Success adalah kunci kesuksesan.",
+        "image": ""
+    },
+    {
+        "id" : 4,
+        "profilePicture" : "",
+        "author": "Megawati",
+        "alias": "@megawati",
+        "timePost": "Feb 2",
+        "section": "Kalah menang penting kumpul",
+        "image": "/src/assets/img/kumpul.jpg"
+    }
+]
