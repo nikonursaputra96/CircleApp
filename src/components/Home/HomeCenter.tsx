@@ -6,20 +6,28 @@ import {
   Button,
   Textarea,
   Divider,
+  Input,
 } from "@chakra-ui/react";
 import { LuImagePlus } from "react-icons/lu";
 import HomeCard from "../../features/HomeCard";
-import { useEffect, useState } from "react"
-import card from "../../lib/Card.json"
-import { ICard } from "../../interfaces/Card";
+import { useEffect} from "react"
+import useThreads from "../../hooks/useThreads";
+import { IThread } from "../../interfaces/Card";
+
+
  
 
-const HomeCenter = () => {
-    const [home, setHome] = useState<ICard[]>([])
-    useEffect (() => {
-        setHome(card)
-    },[])
+const HomeCenter = () :React.JSX.Element => {
 
+    const {threads, getThreadsAndUser,  handleChange, handlePost, handleImageChange} = useThreads()
+
+ 
+
+    useEffect(() => {
+     getThreadsAndUser()
+    },[])
+  
+ 
   return (
     <Box
       w={748}
@@ -32,7 +40,7 @@ const HomeCenter = () => {
       </Text>
 
       <Flex ml="20px" color="white" mt="15px" mr="50px">
-        <Avatar w="40px" h="40px" src="#" />
+        <Avatar w="40px" h="40px" src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/26/2024/03/28/Luffy-One-Piece-Chapter-1112-1102863623.jpg" />
         <Textarea
           ml={2}
           placeholder="What's Happening ?!"
@@ -46,13 +54,20 @@ const HomeCenter = () => {
             },
           }}
           minH="45px"
+          onChange={handleChange}
+          name="content"
         ></Textarea>
+
+          <label htmlFor="imageUpload">
 
         <LuImagePlus
           size={24}
           color="rgba(4, 165, 30, 1)"
           style={{ marginTop: "5px" }}
+          cursor='pointer'
         />
+          </label>
+          <Input id="imageUpload" type="file" accept="image/*" display='none' name="" onChange={handleImageChange} />
 
         <Button
           borderRadius="full"
@@ -62,6 +77,7 @@ const HomeCenter = () => {
           w="63px"
           h="33px"
           ml="20px"
+          onClick={handlePost}
         >
           Post
         </Button>
@@ -69,17 +85,18 @@ const HomeCenter = () => {
 
       <Divider borderColor="rgba(144, 144, 144, 1)" mt="20px" />
 
-    {home && home.map ((data: ICard, id:number) => {
+    {threads?.map((data: IThread, id:number) => {
         return (
             <div key={id}>
                 <HomeCard
                 id={data.id}
-                profilePicture={data.profilePicture}
-                author={data.author}
-                alias={data.alias}
-                timePost={data.timePost}
-                section={data.section}
+                user={data.user}
+                posted_at={data.posted_at}
+                content={data.content}
                 image={data.image}
+                likes={data.likes}
+                reply={data.reply}
+                isLiked={data.isLiked}
                  />
             </div>
         )

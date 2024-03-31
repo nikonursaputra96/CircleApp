@@ -1,0 +1,30 @@
+[
+    {
+        "id" : 1,
+        "profilePicture": "",
+        "author": "This is Sparta",
+        "alias" : "@spartaa",
+        "follow": true
+    },
+    {
+        "id" : 2,
+        "profilePicture": "",
+        "author": "Godfather",
+        "alias" : "@godfather",
+        "follow": false
+    },
+    {
+        "id" : 3,
+        "profilePicture": "",
+        "author": "Valentina",
+        "alias" : "@valentinee",
+        "follow": false
+    },
+    {
+        "id" : 4,
+        "profilePicture": "",
+        "author": "John Cena",
+        "alias" : "@johncena",
+        "follow": false
+    }
+]

@@ -1,32 +1,48 @@
 import { Box, Flex, Divider, Text, Avatar, Image } from "@chakra-ui/react"
 import { TbMessage } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
-import { ICard } from "../interfaces/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
+import { IThread} from "../interfaces/Card";
+import { formatDistanceToNow } from 'date-fns';
 
-const HomeCard = (data :ICard) => {
-
+const HomeCard = (data :IThread) :React.JSX.Element => {
+  
     const [likes, setLikes] = useState<boolean>(false)
     const toggleLike = () => {
         setLikes(!likes)
     }
+    
+    const timeAgo = formatDistanceToNow(new Date(data.posted_at), { addSuffix: true })
 
+    const [imageURL, setImageURL] = useState<string>('');
+
+
+    useEffect(() => {
+      if (data.image) {
+        setImageURL(`http://localhost:5000/api/v1/src/assets/${data.image}`);
+      }
+    }, [data.image]);
+ 
     return (
         <Box>
 
             <Flex ml="20px" color="white" mt="15px">
-            <Avatar w="40px" h="40px" src="#" />
+            <Avatar w="40px" h="40px" src={data.user?.profile_picture} />
             <Flex flexDirection="column">
               <Flex fontSize="14px" gap={1} ml={3}>
-                <Text color="white">{data.author}</Text>
-                <Text color="rgba(144, 144, 144, 1)">{data.alias}</Text>
+                <Text color="white">{data.user?.fullname}</Text>
+                <Text color="rgba(144, 144, 144, 1)">{data.user?.username}</Text>
                 <Text color="rgba(144, 144, 144, 1)">•</Text>
-                <Text color="rgba(144, 144, 144, 1)">{data.timePost}</Text>
+                <Text color="rgba(144, 144, 144, 1)">{timeAgo}</Text>
               </Flex>
-              <Flex ml={3} borderRadius="xl">
-                <Image src={data.image} />
+              {data.image ? (
+              <Flex ml={3} borderRadius="xl" w='50vh'>
+                <Image src={imageURL} />
               </Flex>
+              ): <Flex ml={3} borderRadius="xl" display="none">
+              <Image src={imageURL} />
+            </Flex>}
               <Text
                 textAlign="justify"
                 ml={3}
@@ -35,7 +51,7 @@ const HomeCard = (data :ICard) => {
                 color="white"
                 pr="50px"
               >
-               {data.section}
+               {data.content}
               </Text>
               <Flex gap={2} fontSize="14px" ml={3} mt={3}>
                 <Box onClick={toggleLike}>

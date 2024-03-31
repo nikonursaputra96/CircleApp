@@ -5,7 +5,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 
-const SidebarLeft = () => {
+const SidebarLeft = () :React.JSX.Element  =>  {
   return (
     <Box bg="rgba(63, 63, 63, 1)" w="417px" display="flex" flexDirection="column" justifyContent="space-between" >
     <Box>
