@@ -1,6 +1,15 @@
 import { Box, Button, Flex, FormControl, Input, Text } from "@chakra-ui/react";
+import useRegister from "../../hooks/useRegister";
+import { useNavigate } from "react-router-dom";
 
 const ModalRegister = () => {
+  const {handleChange, handlePost} = useRegister()
+
+  const navigate = useNavigate()
+  const handleLogin = () => {
+    navigate('/auth/login')
+  }
+
   return (
     <Flex
       flexDir={"column"}
@@ -27,6 +36,8 @@ const ModalRegister = () => {
         >
           <Input
             type="text"
+            onChange={handleChange}
+            name="fullname"
             placeholder="FullName"
             my={15}
             h={50}
@@ -38,7 +49,22 @@ const ModalRegister = () => {
           />
           <Input
             type="email"
-            placeholder="Email/Username"
+            onChange={handleChange}
+            name="email"
+            placeholder="Email"
+            my={15}
+            h={50}
+            sx={{
+              "::placeholder": {
+                color: "rgba(144, 144, 144, 1)",
+              },
+            }}
+          />
+          <Input
+            type="text"
+            onChange={handleChange}
+            name="username"
+            placeholder="Username"
             my={15}
             h={50}
             sx={{
@@ -49,6 +75,8 @@ const ModalRegister = () => {
           />
           <Input
             type="password"
+            onChange={handleChange}
+            name="password"
             placeholder="Password"
             h={50}
             my={15}
@@ -69,6 +97,7 @@ const ModalRegister = () => {
         w={"full"}
         h={"45"}
         mt={2}
+        onClick={handlePost}
       >
         CREATE
       </Button>
@@ -77,7 +106,7 @@ const ModalRegister = () => {
         <Text color={"white"} textAlign={"right"} my={"15px"}>
           Already have account?
         </Text>
-        <Text color={"rgba(4, 165, 30, 1)"} ml={2} fontWeight={"bold"}>
+        <Text color={"rgba(4, 165, 30, 1)"} ml={2} fontWeight={"bold"} cursor={"pointer"} onClick={handleLogin}>
           Login
         </Text>
       </Flex>

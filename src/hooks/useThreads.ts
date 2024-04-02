@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react"
-import APIConfig from "../lib/api"
+import {APIConfig} from "../lib/api"
 import { ITestData, IThread, IUserData } from "../interfaces/Card"
 
 const useThreads = () => {
@@ -58,7 +58,7 @@ const useThreads = () => {
         })
     }
     
-    const handlePost = async () => {
+    const handlePost = async () :Promise<void>  => {
         try {
             const config = {
                 headers: {
@@ -68,7 +68,7 @@ const useThreads = () => {
             await APIConfig.post("/threads", form, config)
 
          
-            await getThreadsAndUser()
+             await getThreadsAndUser()
 
             console.log('Post success')
         } catch (error) {
@@ -83,6 +83,7 @@ const useThreads = () => {
         handleImageChange,
         getUser,
         user,
+        form
 
    
     }

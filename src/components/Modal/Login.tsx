@@ -1,6 +1,16 @@
 import { Box, Button, Flex, FormControl, Input, Text } from "@chakra-ui/react";
+import useLogin from "../../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 const ModalLogin = () => {
+
+  const {handleChange, handlePost} = useLogin()
+  const navigate = useNavigate()
+
+  const handleRegisterClick = () => {
+    navigate("/auth/register")
+  }
+
   return (
     <Flex
       flexDir={"column"}
@@ -25,7 +35,9 @@ const ModalLogin = () => {
           border="rgba(144, 144, 144, .5)"
         >
           <Input
+          onChange={handleChange}
             type="email"
+            name="email"
             placeholder="Email/Username"
             my={15}
             h={50}
@@ -36,7 +48,9 @@ const ModalLogin = () => {
             }}
           />
           <Input
+          onChange={handleChange}
             type="password"
+            name="password"
             placeholder="Password"
             h={50}
             sx={{
@@ -59,6 +73,7 @@ const ModalLogin = () => {
         fontSize="20px"
         w={"full"}
         h={"45"}
+        onClick={handlePost}
       >
         Login
       </Button>
@@ -67,7 +82,7 @@ const ModalLogin = () => {
         <Text color={"white"} textAlign={"right"} my={"8px"}>
           Don't have an account yet?
         </Text>
-        <Text color={"rgba(4, 165, 30, 1)"} ml={2} fontWeight={"bold"}>
+        <Text color={"rgba(4, 165, 30, 1)"} ml={2} fontWeight={"bold"} cursor={"ponter"} onClick={handleRegisterClick}>
           Create account
         </Text>
       </Flex>

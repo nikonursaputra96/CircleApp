@@ -59,3 +59,24 @@ export interface ITestReply {
   threadsId: number;
   image: File | string;
 }
+
+// .....................................................//
+export interface IRegister {
+  fullname : string;
+  email: string;
+  password: string;
+  username: string
+}
+export interface ILogin {
+  password: string;
+  email: string
+}
+
+// ...............................................//
+
+export interface IAuth {
+    id: number;
+    username: string;
+    fullname: string;
+    email: string;
+}

@@ -16,7 +16,7 @@ const HomeSearch = () :React.JSX.Element => {
        
 
       <Flex color="white" mt="15px" px={6} >
-        <Avatar mr={8} w="40px" h="40px" src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/26/2024/03/28/Luffy-One-Piece-Chapter-1112-1102863623.jpg" />
+        <Avatar mr={8} w="40px" h="40px"  />
         <Textarea
           placeholder="What's Happening ?!"
           border="none"

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { IReply } from "../interfaces/Card"
-import APIConfig from "../lib/api"
+import {APIConfig} from "../lib/api"
 
 const useReply =  () => {
 

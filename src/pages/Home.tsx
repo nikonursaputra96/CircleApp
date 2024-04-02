@@ -2,11 +2,15 @@ import { Flex, Box } from "@chakra-ui/react"
 import HomeCenter from "../components/Home/HomeCenter"
 import SidebarLeft from "../components/Home/SidebarLeft"
 import SideBarRight from "./SideBarRight"
+import { useSelector } from "react-redux"
+import { RootState } from "../stores/types/rootState"
 
 
 
 const Home = () :React.JSX.Element => {
 
+        const auth = useSelector((state: RootState) => state.auth)
+       console.log(auth)
   
 
     return (

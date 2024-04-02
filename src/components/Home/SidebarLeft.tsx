@@ -4,8 +4,20 @@ import { MdOutlinePersonSearch } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { LOGOUT } from "../../stores/rootReducer";
+import { useNavigate } from "react-router-dom";
 
 const SidebarLeft = () :React.JSX.Element  =>  {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
+  const handleLogout = () => {
+    dispatch(LOGOUT())
+    navigate('/auth/login')
+  }
+
   return (
     <Box bg="rgba(63, 63, 63, 1)" w="417px" display="flex" flexDirection="column" justifyContent="space-between" >
     <Box>
@@ -63,6 +75,8 @@ const SidebarLeft = () :React.JSX.Element  =>  {
         fontSize="18px"
         ml={50}
         pb={50}
+        onClick={handleLogout}
+        cursor={"pointer"}
       >
         <BiLogOut size={32} />
         <Text>Logout</Text>

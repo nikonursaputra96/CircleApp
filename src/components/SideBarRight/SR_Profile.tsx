@@ -1,6 +1,9 @@
 import { Flex, Box, Text, Avatar, Button } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../stores/types/rootState";
 
 const SideBarProfile = () :React.JSX.Element => {
+  const {fullname, username} = useSelector((state: RootState) => state.auth)
   return (
     <div>
       <Box bg="rgba(63, 63, 63, 1)" >
@@ -25,7 +28,7 @@ const SideBarProfile = () :React.JSX.Element => {
               mt={62}
               ml={25}
               border="3px solid black"
-              src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/26/2024/03/28/Luffy-One-Piece-Chapter-1112-1102863623.jpg"
+             
             />
           </Box>
 
@@ -46,10 +49,10 @@ const SideBarProfile = () :React.JSX.Element => {
 
           <Box>
             <Text fontSize="24px" mt={1} color="white" fontWeight="bold">
-              ✨Niko Nur Saputra✨
+              ✨{fullname}✨
             </Text>
             <Text fontSize="14px" mt={1} color="rgba(144, 144, 144, 1)">
-              @nikonursaputra
+              @{username}
             </Text>
             <Text fontSize="16px" mt={1} color="white">
               Here we go again !
