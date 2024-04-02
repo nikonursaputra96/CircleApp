@@ -3,10 +3,10 @@ import { Flex, Box, Text, Avatar, Button } from "@chakra-ui/react";
 const SideBarProfile = () :React.JSX.Element => {
   return (
     <div>
-      <Box>
+      <Box bg="rgba(63, 63, 63, 1)" >
         <Box
           w="483px"
-          h="361px"
+       
           bg="rgba(38, 38, 38, .3)"
           borderRadius="xl"
           mx="auto"

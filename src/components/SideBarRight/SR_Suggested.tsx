@@ -21,7 +21,7 @@ const SideBarSuggested = () :React.JSX.Element => {
 
 
   return (
-    <Flex  bg="rgba(63, 63, 63, 1)" flexDirection="column">
+    <Flex  >
 
       <Box
         w="483px"

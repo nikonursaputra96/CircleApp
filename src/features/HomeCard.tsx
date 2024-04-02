@@ -5,8 +5,14 @@ import { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { IThread} from "../interfaces/Card";
 import { formatDistanceToNow } from 'date-fns';
+import { useNavigate } from "react-router-dom";
 
 const HomeCard = (data :IThread) :React.JSX.Element => {
+
+    const navigate = useNavigate()
+    const handleRepliesClick = () => {
+      navigate(`/threads/${data.id}`);
+    };
   
     const [likes, setLikes] = useState<boolean>(false)
     const toggleLike = () => {
@@ -14,6 +20,7 @@ const HomeCard = (data :IThread) :React.JSX.Element => {
     }
     
     const timeAgo = formatDistanceToNow(new Date(data.posted_at), { addSuffix: true })
+    
 
     const [imageURL, setImageURL] = useState<string>('');
 
@@ -59,7 +66,7 @@ const HomeCard = (data :IThread) :React.JSX.Element => {
                 </Box>
                 
                 <Text mr={3}>35</Text>
-                <TbMessage cursor="pointer" size={24} />
+                <TbMessage cursor="pointer" size={24} onClick={handleRepliesClick}/>
                 <Text>381 Replies</Text>
               </Flex>
             </Flex>

@@ -16,6 +16,7 @@
     reply: number;
     isLiked: boolean;
     image: File | string;
+    
   }
   
   export interface IThreadsResponse {
@@ -37,5 +38,24 @@ export interface IProfile {
 export interface ITestData {
   content: string;
   userId: number;
+  image: File | string;
+}
+
+//................................................................//
+
+export interface IReply {
+  id: number
+  content: string;
+  posted_at: string;
+  isLiked: any;
+  image?: File | string;
+  user: IUserData;
+  threads: IThread;
+}
+
+export interface ITestReply {
+  content: string;
+  userId: number;
+  threadsId: number;
   image: File | string;
 }

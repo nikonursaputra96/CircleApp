@@ -5,6 +5,7 @@ import { ITestData, IThread, IUserData } from "../interfaces/Card"
 const useThreads = () => {
 
     const[threads, setThreads] = useState<IThread[]>([])
+
     const [form, setForm] = useState<ITestData>({
         content: '',
         userId: 10,
@@ -38,7 +39,8 @@ const useThreads = () => {
             throw error
         }
     }
-  
+
+
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]; 
         
@@ -60,14 +62,15 @@ const useThreads = () => {
         try {
             const config = {
                 headers: {
-                    'Content-type' : 'application/json',
-                    'method' : 'POST',
                     'Content-Type': 'multipart/form-data',
                 }
             }
             await APIConfig.post("/threads", form, config)
-            
-            getThreadsAndUser()
+
+         
+            await getThreadsAndUser()
+
+            console.log('Post success')
         } catch (error) {
             throw error
         }
@@ -79,7 +82,8 @@ const useThreads = () => {
         handlePost,
         handleImageChange,
         getUser,
-        user
+        user,
+
    
     }
 }

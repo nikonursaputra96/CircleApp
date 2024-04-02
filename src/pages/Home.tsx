@@ -1,7 +1,7 @@
 import { Flex, Box } from "@chakra-ui/react"
 import HomeCenter from "../components/Home/HomeCenter"
 import SidebarLeft from "../components/Home/SidebarLeft"
-import SideBarRight from "../components/SideBarRight/SideBarRight"
+import SideBarRight from "./SideBarRight"
 
 
 
@@ -19,7 +19,7 @@ const Home = () :React.JSX.Element => {
             <HomeCenter />
             </Flex>
 
-            <Box position='sticky' alignSelf='flex-start' top={0} right={0}>
+            <Box position='relative' alignSelf='flex-start' top={0} right={0} bottom={0}>
             <SideBarRight/>
             </Box>
          
