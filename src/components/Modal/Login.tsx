@@ -82,7 +82,7 @@ const ModalLogin = () => {
         <Text color={"white"} textAlign={"right"} my={"8px"}>
           Don't have an account yet?
         </Text>
-        <Text color={"rgba(4, 165, 30, 1)"} ml={2} fontWeight={"bold"} cursor={"ponter"} onClick={handleRegisterClick}>
+        <Text color={"rgba(4, 165, 30, 1)"} ml={2} fontWeight={"bold"} cursor={"pointer"} onClick={handleRegisterClick}>
           Create account
         </Text>
       </Flex>

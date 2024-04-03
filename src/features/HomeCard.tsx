@@ -19,7 +19,7 @@ const HomeCard = (data :IThread) :React.JSX.Element => {
         setLikes(!likes)
     }
     
-    const timeAgo = formatDistanceToNow(new Date(data.posted_at), { addSuffix: true })
+    const timeAgo = formatDistanceToNow(new Date(data.posted_at), { addSuffix: false })
     
 
     const [imageURL, setImageURL] = useState<string>('');
@@ -39,22 +39,22 @@ const HomeCard = (data :IThread) :React.JSX.Element => {
             <Flex flexDirection="column">
               <Flex fontSize="14px" gap={1} ml={3}>
                 <Text color="white">{data.user?.fullname}</Text>
-                <Text color="rgba(144, 144, 144, 1)">{data.user?.username}</Text>
+                <Text color="rgba(144, 144, 144, 1)">@{data.user?.username}</Text>
                 <Text color="rgba(144, 144, 144, 1)">•</Text>
                 <Text color="rgba(144, 144, 144, 1)">{timeAgo}</Text>
               </Flex>
               {data.image ? (
-              <Flex ml={3} borderRadius="xl" w='50vh'>
+              <Flex ml={3} mt={2} borderRadius="xl" w='50vh'>
                 <Image src={imageURL} />
               </Flex>
-              ): <Flex ml={3} borderRadius="xl" display="none">
+              ): <Flex ml={3} mt={2} borderRadius="xl" display="none">
               <Image src={imageURL} />
             </Flex>}
               <Text
                 textAlign="justify"
                 ml={3}
                 fontSize="14px"
-                mt={1}
+                mt={2}
                 color="white"
                 pr="50px"
               >

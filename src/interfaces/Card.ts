@@ -38,7 +38,7 @@ export interface IProfile {
 export interface ITestData {
   content: string;
   userId: number;
-  image: File | string;
+  image: File | string | null;
 }
 
 //................................................................//
@@ -48,7 +48,7 @@ export interface IReply {
   content: string;
   posted_at: string;
   isLiked: any;
-  image?: File | string;
+  image?: File | string | null;
   user: IUserData;
   threads: IThread;
 }
@@ -57,7 +57,7 @@ export interface ITestReply {
   content: string;
   userId: number;
   threadsId: number;
-  image: File | string;
+  image?: File | string | null;
 }
 
 // .....................................................//

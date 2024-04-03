@@ -1,28 +1,13 @@
-import {
-  Box,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Spinner, Text } from "@chakra-ui/react";
 
 import HomeCard from "../../features/HomeCard";
-import { useEffect} from "react"
 import useThreads from "../../hooks/useThreads";
 import { IThread } from "../../interfaces/Card";
 import HomeSearch from "./HomeSearch";
 
+const HomeCenter = (): React.JSX.Element => {
+  const { getThreads, isLoading, isError } = useThreads();
 
- 
-
-const HomeCenter = () :React.JSX.Element => {
-
-    const {threads, getThreadsAndUser, } = useThreads()
-
- 
-
-    useEffect(() => {
-     getThreadsAndUser()
-    },[])
-  
- 
   return (
     <Box
       w={748}
@@ -30,18 +15,18 @@ const HomeCenter = () :React.JSX.Element => {
       borderRight="2px solid rgba(144, 144, 144, .5)"
       borderLeft="1px solid rgba(144, 144, 144, .5)"
     >
-
       <Text color="rgba(255, 255, 255, 1)" fontSize={28} ml="20px" mt={45}>
         Home
       </Text>
-    
-    <HomeSearch/>
-  
-    
-    {threads && threads?.map((data: IThread, id:number) => {
-        return (
+
+      <HomeSearch />
+
+      {!isLoading ? (
+        getThreads &&
+        getThreads?.map((data: IThread, id: number) => {
+          return (
             <div key={id}>
-                <HomeCard
+              <HomeCard
                 id={data.id}
                 user={data.user}
                 posted_at={data.posted_at}
@@ -50,21 +35,33 @@ const HomeCenter = () :React.JSX.Element => {
                 likes={data.likes}
                 reply={data.reply}
                 isLiked={data.isLiked}
-                 />
+              />
             </div>
-        )
-    })}
-
-
-
-
-
+          );
+        })
+      ) : (
+        <Spinner
+          position={"absolute"}
+          top="50%"
+          left="50%"
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="rgba(4, 165, 30, 1)"
+          size="xl"
+        />
+      )}
       
-
-
-
-
-    
+      {isError && (
+        <Text
+          color="rgba(4, 165, 30, 1)"
+          position={"absolute"}
+          fontSize={"30px"}
+          fontWeight={"bold"}
+        >
+          Error Loading Data...
+        </Text>
+      )}
     </Box>
   );
 };

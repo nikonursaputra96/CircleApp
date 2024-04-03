@@ -1,17 +1,18 @@
 import { Avatar, Box, Button, Divider, Flex, Input, Textarea, } from '@chakra-ui/react'
 import React from 'react'
 import { LuImagePlus } from 'react-icons/lu'
-import useThreads from '../../hooks/useThreads'
+import useReply from '../../hooks/useReply'
 
-const SearchDetail = () :React.JSX.Element => {
-    const { handleChange, handlePost, handleImageChange} = useThreads()
+const SearchDetail = ({threadId} : {threadId: number}) :React.JSX.Element => {
+    const { handleChange, handlePost} = useReply(threadId)
+ 
   return (
     
     <Box>
        
 
       <Flex color="white" mt="15px" px={6} >
-        <Avatar mr={8} w="40px" h="40px" src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/26/2024/03/28/Luffy-One-Piece-Chapter-1112-1102863623.jpg" />
+        <Avatar mr={8} w="40px" h="40px"  />
         <Textarea
           placeholder="Type your reply!"
           border="none"
@@ -37,7 +38,7 @@ const SearchDetail = () :React.JSX.Element => {
           cursor='pointer'
         />
           </label>
-          <Input id="imageUpload" type="file" accept="image/*" display='none' name="" onChange={handleImageChange} />
+          <Input id="imageUpload" type="file" accept="image/*" display='none' name="" />
 
         <Button
         
@@ -49,6 +50,7 @@ const SearchDetail = () :React.JSX.Element => {
           h="33px"
           ml="20px"
           onClick={handlePost}
+      
         >
           Reply
         </Button>

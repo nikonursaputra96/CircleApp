@@ -7,7 +7,7 @@ import useThreads from '../../hooks/useThreads'
 const HomeSearch = () :React.JSX.Element => {
     const { handleChange, handlePost, handleImageChange} = useThreads()
 
-
+    
    
    
   return (
@@ -53,7 +53,7 @@ const HomeSearch = () :React.JSX.Element => {
           w="63px"
           h="33px"
           ml="20px"
-          onClick={handlePost}
+          onClick={() => handlePost.mutate()}
         >
           Post
         </Button>

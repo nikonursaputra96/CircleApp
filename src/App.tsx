@@ -7,6 +7,7 @@ import { APIConfig, setAuthToken } from "./lib/api";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AUTH_CHECK, AUTH_ERROR } from "./stores/rootReducer";
+import MainPages from "./layouts/MainPages";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,8 +46,22 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<IsLogin />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/threads/:id" element={<Detail />} />
+        <Route
+          path="/"
+          element={
+            <MainPages>
+              <Home />
+            </MainPages>
+          }
+        />
+        <Route
+          path="/threads/:id"
+          element={
+            <MainPages>
+              <Detail />
+            </MainPages>
+          }
+        />
       </Route>
 
       <Route path="/" element={<IsNotLogin />}>
