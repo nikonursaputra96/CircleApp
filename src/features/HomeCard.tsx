@@ -1,7 +1,7 @@
 import { Box, Flex, Divider, Text, Avatar, Image } from "@chakra-ui/react"
 import { TbMessage } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { IThread} from "../interfaces/Card";
 import { formatDistanceToNow } from 'date-fns';
@@ -20,17 +20,9 @@ const HomeCard = (data :IThread) :React.JSX.Element => {
     }
     
     const timeAgo = formatDistanceToNow(new Date(data.posted_at), { addSuffix: false })
+   
     
-
-    const [imageURL, setImageURL] = useState<string>('');
-
-
-    useEffect(() => {
-      if (data.image) {
-        setImageURL(`http://localhost:5000/api/v1/src/assets/${data.image}`);
-      }
-    }, [data.image]);
- 
+  
     return (
         <Box>
 
@@ -45,10 +37,10 @@ const HomeCard = (data :IThread) :React.JSX.Element => {
               </Flex>
               {data.image ? (
               <Flex ml={3} mt={2} borderRadius="xl" w='50vh'>
-                <Image src={imageURL} />
+                <Image src={data.image} />
               </Flex>
               ): <Flex ml={3} mt={2} borderRadius="xl" display="none">
-              <Image src={imageURL} />
+              <Image src={data.image} />
             </Flex>}
               <Text
                 textAlign="justify"

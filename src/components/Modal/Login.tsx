@@ -38,6 +38,7 @@ const ModalLogin = () => {
           onChange={handleChange}
             type="email"
             name="email"
+            id="email-input"
             placeholder="Email/Username"
             my={15}
             h={50}
@@ -51,6 +52,7 @@ const ModalLogin = () => {
           onChange={handleChange}
             type="password"
             name="password"
+            id="password-input"
             placeholder="Password"
             h={50}
             sx={{

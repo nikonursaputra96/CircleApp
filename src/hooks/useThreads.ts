@@ -23,6 +23,22 @@ const useThreads = () => {
 
    
 
+    
+    const [user, setUser] = useState<IUserData[]>([])
+    const getUser = async () :Promise<void> => {
+        try {
+            
+            const userResponse = await APIConfig.get("/user")
+            const user = userResponse.data
+            
+            setUser(user)
+        } catch (error) {
+            throw error
+        }
+    }
+    
+    
+    
     const [form, setForm] = useState<ITestData>({
         content: '',
         userId: id,
@@ -30,30 +46,16 @@ const useThreads = () => {
     })
 
 
-    const [user, setUser] = useState<IUserData[]>([])
-    const getUser = async () :Promise<void> => {
-        try {
-
-            const userResponse = await APIConfig.get("/user")
-            const user = userResponse.data
-    
-            setUser(user)
-        } catch (error) {
-            throw error
-        }
-    }
-
-
-
-
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]; 
         
         if (file) {
-            setForm({...form, image : file})
+            setForm({
+                ...form, 
+               image : file})
         }
-        
+
     };
       
     const handleChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
@@ -64,19 +66,27 @@ const useThreads = () => {
         })
     }
     
-   
-
-    const handlePost = useMutation({
-        mutationFn: async () => {
-            const config = {
-                headers : {
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
-            await APIConfig.post("/threads", form, config)
+    const {mutateAsync} =   useMutation<unknown, unknown, FormData>({
+        mutationFn: async (dto) => {
+         
+            await APIConfig.post("/threads", dto)
         },
         onSuccess: () => refetch()
     })
+
+    const handlePost = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        const formData = new FormData()
+        formData.append('content', form.content)
+        formData.append('image', form?.image as string)
+        formData.append('userId', String(form?.userId))
+
+      
+        mutateAsync(formData)
+    }
+
+  
 
     return {
         getThreads, 

@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Divider, Flex, Input, Textarea, } from '@chakra-ui/react'
+import { Avatar, Button, Divider,  FormControl, Input, Textarea, } from '@chakra-ui/react'
 import React from 'react'
 import { LuImagePlus } from 'react-icons/lu'
 import useThreads from '../../hooks/useThreads'
@@ -11,11 +11,10 @@ const HomeSearch = () :React.JSX.Element => {
    
    
   return (
-    
-    <Box>
-       
+    <form encType='multipart/form-data' onSubmit={handlePost}>
+  
 
-      <Flex color="white" mt="15px" px={6} >
+      <FormControl display={"flex"} color="white" mt="15px" px={6} >
         <Avatar mr={8} w="40px" h="40px"  />
         <Textarea
           placeholder="What's Happening ?!"
@@ -53,16 +52,15 @@ const HomeSearch = () :React.JSX.Element => {
           w="63px"
           h="33px"
           ml="20px"
-          onClick={() => handlePost.mutate()}
+          type='submit'
         >
           Post
         </Button>
-      </Flex>
+      </FormControl>
 
       <Divider borderBottom="1px solid rgba(144, 144, 144, .5)" mt={4} />
 
-
-    </Box>
+    </form>
   )
 }
 

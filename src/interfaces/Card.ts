@@ -15,7 +15,7 @@
     likes: number;
     reply: number;
     isLiked: boolean;
-    image: File | string;
+    image:  string | undefined;
     
   }
   
