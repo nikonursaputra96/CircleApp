@@ -7,11 +7,23 @@ import { BiLogOut } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../stores/rootReducer";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import HomeSearchModal from "../Modal/HomeSearchModal";
 
 const SidebarLeft = () :React.JSX.Element  =>  {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   
   const handleLogout = () => {
     dispatch(LOGOUT())
@@ -54,6 +66,7 @@ const SidebarLeft = () :React.JSX.Element  =>  {
       </Flex>
 
       <Button
+      onClick={handleOpenModal}
         bg="rgba(4, 165, 30, 1)"
         borderRadius="full"
         width="337px"
@@ -81,6 +94,7 @@ const SidebarLeft = () :React.JSX.Element  =>  {
         <BiLogOut size={32} />
         <Text>Logout</Text>
       </Flex>
+      <HomeSearchModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </Box>
   );
 };

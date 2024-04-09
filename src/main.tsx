@@ -9,6 +9,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "../src/stores/rootReducer.ts";
 import { Provider } from "react-redux";
 import {QueryClientProvider, QueryClient} from "@tanstack/react-query"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const config = configureStore({
@@ -23,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Router>
           <Provider store={config}>
           <App />
+          <ToastContainer />
           </Provider>
         </Router>
       </QueryClientProvider>

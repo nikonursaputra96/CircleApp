@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AUTH_CHECK, AUTH_ERROR } from "./stores/rootReducer";
 import MainPages from "./layouts/MainPages";
+import { Bounce, toast } from "react-toastify";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,25 @@ const App = () => {
       return <Outlet />;
     }
   };
+
+  // SSE Notification
+  useEffect(() => {
+    const sse = new EventSource("http://localhost:5000/api/v1/notifications")
+
+    sse.onmessage = () => {
+      toast.success('Notification : Threads Created !', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+        });
+    }
+  }, [])
 
   return (
     <Routes>

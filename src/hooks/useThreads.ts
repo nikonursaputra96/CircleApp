@@ -55,7 +55,7 @@ const useThreads = () => {
                 ...form, 
                image : file})
         }
-
+     
     };
       
     const handleChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
@@ -64,6 +64,7 @@ const useThreads = () => {
             [e.target.name]:e.target.value,
             
         })
+     
     }
     
     const {mutateAsync} =   useMutation<unknown, unknown, FormData>({
@@ -74,7 +75,7 @@ const useThreads = () => {
         onSuccess: () => refetch()
     })
 
-    const handlePost = (e: React.FormEvent<HTMLFormElement>) => {
+    const handlePost = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const formData = new FormData()
@@ -83,9 +84,9 @@ const useThreads = () => {
         formData.append('userId', String(form?.userId))
 
       
-        mutateAsync(formData)
+        await mutateAsync(formData)
     }
-
+  
   
 
     return {
