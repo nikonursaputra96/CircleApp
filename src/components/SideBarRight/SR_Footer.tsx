@@ -31,7 +31,7 @@ const SideBarFooter = () :React.JSX.Element => {
 
         <Flex color="rgba(178, 178, 178, 1)" gap={2} alignItems="center" mt={1}>
           <Text fontSize="14px">Powered by</Text>
-          <Image src="./src/assets/img/logodumbways.png" w="24px" h="12px" />
+          <Image src="/src/assets/img/logodumbways.png" w="24px" h="12px"/>
           <Text fontSize="14px">Dumbways Indonesia</Text>
           <Text>•</Text>
           <Text fontSize="14px">#1 Coding Bootcamp</Text>

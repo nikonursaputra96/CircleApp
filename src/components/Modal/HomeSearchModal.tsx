@@ -20,13 +20,7 @@ import { LuImagePlus } from "react-icons/lu";
 import useThreads from "../../hooks/useThreads";
 
 
-const HomeSearchModal = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}): React.JSX.Element => {
+const HomeSearchModal = ({ isOpen,onClose,}: {isOpen: boolean; onClose: () => void;}): React.JSX.Element => {
 
   const { handleChange, handlePost, handleImageChange } = useThreads();
 

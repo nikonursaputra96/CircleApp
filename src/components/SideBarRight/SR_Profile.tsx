@@ -1,15 +1,22 @@
 import { Flex, Box, Text, Avatar, Button } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../stores/types/rootState";
+import { useNavigate } from "react-router-dom";
 
 const SideBarProfile = () :React.JSX.Element => {
-  const {fullname, username} = useSelector((state: RootState) => state.auth)
+  const {fullname, username, id } = useSelector((state: RootState) => state.auth)
+  const navigate = useNavigate()
+  const handleProfileClick = () => {
+    navigate(`/profile/${id}`);
+  };
+
   return (
     <div>
-      <Box bg="rgba(63, 63, 63, 1)" >
+      <Box bg="rgba(63, 63, 63, 1)" 
+      onClick={handleProfileClick}
+      cursor={"pointer"}>
         <Box
           w="483px"
-       
           bg="rgba(38, 38, 38, .3)"
           borderRadius="xl"
           mx="auto"

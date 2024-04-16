@@ -9,6 +9,9 @@ import { useDispatch } from "react-redux";
 import { AUTH_CHECK, AUTH_ERROR } from "./stores/rootReducer";
 import MainPages from "./layouts/MainPages";
 import { Bounce, toast } from "react-toastify";
+import ProfilePages from "./layouts/ProfilePages";
+import Profile from "./pages/Profile";
+import EditProfile from "./components/Profile/EditProfle";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -82,6 +85,15 @@ const App = () => {
             </MainPages>
           }
         />
+        <Route
+          path="/profile/:id"
+          element={
+           <ProfilePages>
+              <Profile/>
+           </ProfilePages>
+          }
+        />
+        <Route path="/edit-profile" element={<EditProfile/>}/>
       </Route>
 
       <Route path="/" element={<IsNotLogin />}>
